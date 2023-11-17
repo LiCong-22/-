@@ -1,0 +1,11 @@
+1.将一台车机的写为master，通过如下ADB指令：
+    echo "enable n;" > /proc/alog
+    hutil_net.happ --eth --set-master（在IVI端设置）
+    hutil_net.happ --eth --getall
+2.Master车机的CEFA的值写为01 01 00 00 00 00 00 00
+3.将另外一台车机写为slave（车机默认slave，可以先读取，若为slave可以不用写），通过如下ADB指令：
+    echo "enable n;" > /proc/alog
+    hutil_net.happ --eth --set-slave（在IVI端设置）
+    hutil_net.happ --eth --getall
+4.slave车机的CEFA的值写为 01 03 AC 1F 00 FA 01 01
+5.  5s后在，master车机上分别读取CEFB和CEFC的值
